@@ -25,3 +25,12 @@ add_task(async function test_bounce_stateful_indexedDB() {
     setStateInWebWorker: true,
   });
 });
+
+add_task(async function test_bounce_stateful_indexedDB_nestedWorker() {
+  info("Client bounce with indexedDB access from a nested worker.");
+  await runTestBounce({
+    bounceType: "client",
+    setState: "indexedDB",
+    setStateInNestedWebWorker: true,
+  });
+});
