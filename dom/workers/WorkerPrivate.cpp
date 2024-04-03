@@ -1838,8 +1838,6 @@ bool WorkerPrivate::Freeze(const nsPIDOMWindowInner* aWindow) {
     return true;
   }
 
-  DisableDebugger();
-
   RefPtr<FreezeRunnable> runnable = new FreezeRunnable(this);
   return runnable->Dispatch();
 }
@@ -1879,8 +1877,6 @@ bool WorkerPrivate::Thaw(const nsPIDOMWindowInner* aWindow) {
       return true;
     }
   }
-
-  EnableDebugger();
 
   RefPtr<ThawRunnable> runnable = new ThawRunnable(this);
   return runnable->Dispatch();
